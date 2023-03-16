@@ -1,0 +1,17 @@
+{
+  "name": "mxdiscord",
+  "version": "1.0.0",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "node ."
+  },
+  "author": "max",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "discord.js": "^14.7.1",
+    "dotenv": "^16.0.3",
+    "mongoose": "^6.9.0"
+  }
+}
