@@ -2,34 +2,48 @@ const { ActivityType } = require("discord.js");
 
 module.exports = (client) => {
   client.pickPresence = async () => {
+    // options | devmode_options
+    const mode = "devmode_options";
     const options = [
       {
-        type: ActivityType.Watching,
-        text: "test1",
+        type: ActivityType.Listening,
+        text: "commands",
         status: "online",
       },
       {
         type: ActivityType.Listening,
-        text: "test2",
-        status: "idle",
+        text: "commands",
+        status: "online",
+      },
+      {
+        type: ActivityType.Listening,
+        text: "commands",
+        status: "online",
+      },
+    ];
+    const devmode_options = [
+      {
+        type: ActivityType.Watching,
+        text: "Maintenance!",
+        status: "dnd",
       },
       {
         type: ActivityType.Playing,
-        text: "test3",
+        text: "back soon!",
         status: "dnd",
       },
     ];
-    const option = Math.floor(Math.random() * options.length);
+    const presenceOptions = mode === "options" ? options : devmode_options;
+    const option = Math.floor(Math.random() * presenceOptions.length);
 
-    client.user
-      .setPresence({
-        activities: [
-          {
-            name: options[option].text,
-            type: options[option].type,
-          },
-        ],
-        status: options[option].status,
-      })
+    client.user.setPresence({
+      activities: [
+        {
+          name: presenceOptions[option].text,
+          type: presenceOptions[option].type,
+        },
+      ],
+      status: presenceOptions[option].status,
+    });
   };
 };
